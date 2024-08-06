@@ -4,7 +4,6 @@ about: Propose changes that enhance clarity, performance, or ease-of-testing
 title: 'refactor: [add a title for the refactor]'
 labels: ''
 assignees: ''
-
 ---
 
 **Is your refactor proposal related to a problem? Please describe.**

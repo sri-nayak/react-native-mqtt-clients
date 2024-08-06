@@ -5,7 +5,7 @@
       "react-native-mqtt": ["./src/index"]
     },
     "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "allowUnusedLabels": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",

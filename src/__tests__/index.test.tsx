@@ -314,30 +314,42 @@ describe('events', () => {
   });
 
   it('calls message received callback', (done) => {
-    const msg = { topic: 'test/topic/#', payload: Uint8Array.from(Buffer.from("Test", "utf-8")) };
-    mqttClient.on(MqttEvent.MESSAGE_RECEIVED, (topic: string, payload: Uint8Array) => {
-      expect(topic).toBe(msg.topic);
-      expect(payload).toStrictEqual(msg.payload);
-      done();
-    });
+    const msg = {
+      topic: 'test/topic/#',
+      payload: Uint8Array.from(Buffer.from('Test', 'utf-8')),
+    };
+    mqttClient.on(
+      MqttEvent.MESSAGE_RECEIVED,
+      (topic: string, payload: Uint8Array) => {
+        expect(topic).toBe(msg.topic);
+        expect(payload).toStrictEqual(msg.payload);
+        done();
+      }
+    );
     mockEmitter.triggerEvent(MqttEvent.MESSAGE_RECEIVED, {
       ...baseParams,
       [MqttEventParam.TOPIC]: msg.topic,
-      [MqttEventParam.PAYLOAD]: "VGVzdA=="
+      [MqttEventParam.PAYLOAD]: 'VGVzdA==',
     });
   });
 
   it('calls message published callback', (done) => {
-    const msg = { topic: 'test/topic/#', payload: Uint8Array.from(Buffer.from("Test", "utf-8")) };
-    mqttClient.on(MqttEvent.MESSAGE_PUBLISHED, (topic: string, payload: Uint8Array) => {
-      expect(topic).toBe(msg.topic);
-      expect(payload).toStrictEqual(msg.payload);
-      done();
-    });
+    const msg = {
+      topic: 'test/topic/#',
+      payload: Uint8Array.from(Buffer.from('Test', 'utf-8')),
+    };
+    mqttClient.on(
+      MqttEvent.MESSAGE_PUBLISHED,
+      (topic: string, payload: Uint8Array) => {
+        expect(topic).toBe(msg.topic);
+        expect(payload).toStrictEqual(msg.payload);
+        done();
+      }
+    );
     mockEmitter.triggerEvent(MqttEvent.MESSAGE_PUBLISHED, {
       ...baseParams,
       [MqttEventParam.TOPIC]: msg.topic,
-      [MqttEventParam.PAYLOAD]: "VGVzdA=="
+      [MqttEventParam.PAYLOAD]: 'VGVzdA==',
     });
   });
 

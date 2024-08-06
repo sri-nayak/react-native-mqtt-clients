@@ -129,6 +129,7 @@
       "prettier"
     ],
     "rules": {
+      "no-undef": "off",
       "prettier/prettier": [
         "error",
         {
@@ -136,21 +137,24 @@
           "singleQuote": true,
           "tabWidth": 2,
           "trailingComma": "es5",
-          "useTabs": false
+          "useTabs": false,
+          "no-undef": "off"
         }
       ]
     }
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/"
   ],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "no-undef": "off"
   },
   "react-native-builder-bob": {
     "source": "src",

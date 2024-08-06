@@ -1,14 +1,16 @@
 class NativeEventEmitterMock {
-  isTestEventEmitter = true
+  isTestEventEmitter = true;
   listeners: { event: string; callback: (event: any) => void }[] = [];
 
   constructor(_: any) {}
 
   resetMock() {
-    this.listeners = []
+    this.listeners = [];
   }
   triggerEvent(eventType: string, params: any) {
-    this.listeners.filter(l => l.event === eventType).forEach(l => l.callback(params))
+    this.listeners
+      .filter((l) => l.event === eventType)
+      .forEach((l) => l.callback(params));
   }
   removeAllListeners(eventType: string) {
     this.listeners = this.listeners.filter((l) => l.event !== eventType);
@@ -18,4 +20,4 @@ class NativeEventEmitterMock {
   }
 }
 
-export const mockEmitter = new NativeEventEmitterMock({})
+export const mockEmitter = new NativeEventEmitterMock({});
