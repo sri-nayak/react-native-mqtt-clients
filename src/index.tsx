@@ -4,6 +4,7 @@ import type { PublishOptions } from './models/PublishOptions';
 import { MqttEvent } from './models/events/MqttEvent';
 import { MqttEventParam } from './models/events/MqttEventParam';
 import { MqttNative, MqttEventEmitter } from './models/NativeMqtt';
+import { Buffer } from 'buffer';
 
 export * from './models/events/MqttEvent';
 export * from './models/Protocol';
@@ -113,9 +114,7 @@ export class MqttClient {
   ): void {
     MqttNative.publish(
       topic,
-      Array.from(payload)
-        .map((byte) => String.fromCharCode(byte))
-        .join(''),
+      Buffer.from(payload).toString('base64'),
       options,
       this._clientRef
     );
@@ -128,9 +127,7 @@ export class MqttClient {
   ): Promise<void> {
     MqttNative.publish(
       topic,
-      Array.from(payload)
-        .map((byte) => String.fromCharCode(byte))
-        .join(''),
+      Buffer.from(payload).toString('base64'),
       options,
       this._clientRef
     );
@@ -220,9 +217,9 @@ export class MqttClient {
         eventType === MqttEvent.MESSAGE_PUBLISHED ||
         eventType === MqttEvent.MESSAGE_RECEIVED
       ) {
-        event[MqttEventParam.PAYLOAD] = new TextEncoder().encode(
+        event[MqttEventParam.PAYLOAD] = Buffer.from(
           event[MqttEventParam.PAYLOAD]
-        );
+        ).toString('utf-8');
       }
 
       this._eventHandler[eventType]?.call(
