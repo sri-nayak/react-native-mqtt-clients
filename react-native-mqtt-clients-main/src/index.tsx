@@ -111,6 +111,7 @@ export class MqttClient {
     payload: Uint8Array,
     options: PublishOptions = {}
   ): void {
+    console.log(payload);
     MqttNative.publish(
       topic,
       new TextDecoder().decode(payload),
