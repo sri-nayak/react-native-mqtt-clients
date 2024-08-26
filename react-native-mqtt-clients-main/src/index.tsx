@@ -112,7 +112,14 @@ export class MqttClient {
     options: PublishOptions = {}
   ): void {
     console.log(payload);
-    MqttNative.publish(topic, payload, options, this._clientRef);
+    MqttNative.publish(
+      topic,
+      Array.from(payload)
+        .map((byte) => String.fromCharCode(byte))
+        .join(''),
+      options,
+      this._clientRef
+    );
   }
 
   async publishAsync(
@@ -120,7 +127,14 @@ export class MqttClient {
     payload: Uint8Array,
     options: PublishOptions = {}
   ): Promise<void> {
-    MqttNative.publish(topic, payload, options, this._clientRef);
+    MqttNative.publish(
+      topic,
+      Array.from(payload)
+        .map((byte) => String.fromCharCode(byte))
+        .join(''),
+      options,
+      this._clientRef
+    );
   }
 
   reconnect(): void {
