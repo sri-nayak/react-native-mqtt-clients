@@ -1,6 +1,6 @@
 {
   "name": "react-native-mqtt-client-ios",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "The Mqtt client for react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
